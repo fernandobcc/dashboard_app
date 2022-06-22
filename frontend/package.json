@@ -24,6 +24,11 @@
     "lint": "eslint src",
     "prepare": "cd .. && husky install frontend/.husky"
   },
+  "lint-staged": {
+    "src": [
+      "eslint --fix src"
+    ]
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
