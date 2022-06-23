@@ -8,5 +8,6 @@ module.exports = {
         runtime: 'automatic'
       }
     ]
-  ]
+  ],
+  plugins: [['styled-components', { ssr: false }]]
 }
