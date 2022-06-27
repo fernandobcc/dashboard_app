@@ -2,7 +2,10 @@ import * as S from './styles'
 
 const ContentHeader = () => (
   <S.Wrapper>
-    <h1>ContentHeader</h1>
+    <S.TitleContainer>
+      <h1>Ze</h1>
+    </S.TitleContainer>
+    <S.Controllers></S.Controllers>
   </S.Wrapper>
 )
 

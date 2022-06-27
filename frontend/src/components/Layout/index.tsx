@@ -3,11 +3,15 @@ import Content from '../Content'
 import MainHeader from '../MainHeader'
 import * as S from './styles'
 
-const Layout = () => (
+interface Props {
+  children: React.ReactNode
+}
+
+const Layout: React.FC<Props> = ({ children }) => (
   <S.Wrapper>
     <MainHeader />
     <Aside />
-    <Content />
+    <Content>{children}</Content>
   </S.Wrapper>
 )
 

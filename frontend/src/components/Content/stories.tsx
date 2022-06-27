@@ -6,4 +6,6 @@ export default {
   component: Content
 } as ComponentMeta<typeof Content>
 
-export const Default: ComponentStory<typeof Content> = () => <Content />
+export const Default: ComponentStory<typeof Content> = ({ children }) => (
+  <Content>{children}</Content>
+)

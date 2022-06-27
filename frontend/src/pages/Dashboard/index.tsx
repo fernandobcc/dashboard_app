@@ -1,8 +1,12 @@
+import * as S from './styles'
+
+import ContentHeader from '../../components/ContentHeader'
+
 const Dashboard: React.FC = () => {
   return (
-    <div>
-      <h1>Dashboard</h1>
-    </div>
+    <S.Wrapper>
+      <ContentHeader />
+    </S.Wrapper>
   )
 }
 

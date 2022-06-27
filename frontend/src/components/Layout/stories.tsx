@@ -6,4 +6,4 @@ export default {
   component: Layout
 } as ComponentMeta<typeof Layout>
 
-export const Default: ComponentStory<typeof Layout> = () => <Layout />
+export const Default: ComponentStory<typeof Layout> = ({ children }) => <Layout>{children}</Layout>
