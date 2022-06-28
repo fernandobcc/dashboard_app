@@ -1,12 +1,20 @@
 import * as S from './styles'
 
-const ContentHeader = () => (
-  <S.Wrapper>
-    <S.TitleContainer>
-      <h1>Ze</h1>
-    </S.TitleContainer>
-    <S.Controllers></S.Controllers>
-  </S.Wrapper>
-)
+interface IContentHeaderProps {
+  title: string
+  lineColor: string
+  children: React.ReactNode
+}
+
+const ContentHeader: React.FC<IContentHeaderProps> = ({ title, lineColor, children }) => {
+  return (
+    <S.Wrapper>
+      <S.TitleContainer lineColor={lineColor}>
+        <h1>{title}</h1>
+      </S.TitleContainer>
+      <S.Controllers>{children}</S.Controllers>
+    </S.Wrapper>
+  )
+}
 
 export default ContentHeader
