@@ -10232,16 +10232,7 @@ jest-worker@^28.1.1:
     merge-stream "^2.0.0"
     supports-color "^8.0.0"
 
-jest@^27.4.3:
-  version "27.5.1"
-  resolved "https://registry.yarnpkg.com/jest/-/jest-27.5.1.tgz#dadf33ba70a779be7a6fc33015843b51494f63fc"
-  integrity sha512-Yn0mADZB89zTtjkPJEXwrac3LHudkQMR+Paqa8uxJHCBr9agxztUifWCyiYrjhMPBoUVBjyny0I7XH6ozDr7QQ==
-  dependencies:
-    "@jest/core" "^27.5.1"
-    import-local "^3.0.2"
-    jest-cli "^27.5.1"
-
-jest@^28.1.1:
+jest@>=17.0.0:
   version "28.1.1"
   resolved "https://registry.yarnpkg.com/jest/-/jest-28.1.1.tgz#3c39a3a09791e16e9ef283597d24ab19a0df701e"
   integrity sha512-qw9YHBnjt6TCbIDMPMpJZqf9E12rh6869iZaN08/vpOGgHJSAaLLUn6H8W3IAEuy34Ls3rct064mZLETkxJ2XA==
@@ -10250,6 +10241,15 @@ jest@^28.1.1:
     "@jest/types" "^28.1.1"
     import-local "^3.0.2"
     jest-cli "^28.1.1"
+
+jest@^27.4.3:
+  version "27.5.1"
+  resolved "https://registry.yarnpkg.com/jest/-/jest-27.5.1.tgz#dadf33ba70a779be7a6fc33015843b51494f63fc"
+  integrity sha512-Yn0mADZB89zTtjkPJEXwrac3LHudkQMR+Paqa8uxJHCBr9agxztUifWCyiYrjhMPBoUVBjyny0I7XH6ozDr7QQ==
+  dependencies:
+    "@jest/core" "^27.5.1"
+    import-local "^3.0.2"
+    jest-cli "^27.5.1"
 
 js-string-escape@^1.0.1:
   version "1.0.1"
