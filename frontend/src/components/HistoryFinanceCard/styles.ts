@@ -1,15 +1,11 @@
 import styled from 'styled-components'
 
-type WrapperProps = {
-  color: string
-}
-
 type TagProps = {
   color: string
 }
 
-export const Wrapper = styled.li<WrapperProps>`
-  background-color: ${(props) => props.color};
+export const Wrapper = styled.li`
+  background-color: ${(props) => props.theme.colors.tertiary};
 
   list-style: none;
   border-radius: 5px;
