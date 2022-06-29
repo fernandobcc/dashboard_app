@@ -10,19 +10,19 @@ const Aside = () => (
     </S.Header>
 
     <S.MenuContainer>
-      <S.MenuItemLink href="#">
+      <S.MenuItemLink href="/dashboad">
         <MdDashboard />
         Dashboard
       </S.MenuItemLink>
-      <S.MenuItemLink href="#">
+      <S.MenuItemLink href="/list/entry-balance">
         <MdArrowUpward />
         Input
       </S.MenuItemLink>
-      <S.MenuItemLink href="#">
+      <S.MenuItemLink href="/list/leave-balance">
         <MdArrowDownward />
         Output
       </S.MenuItemLink>
-      <S.MenuItemLink href="#">
+      <S.MenuItemLink href="/leave">
         <MdExitToApp />
         Exit
       </S.MenuItemLink>

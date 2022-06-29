@@ -1,9 +1,26 @@
+import { useMemo } from 'react'
 import ContentHeader from '../../components/ContentHeader'
 import HistoryFinanceCard from '../../components/HistoryFinanceCard'
 import SelectInput from '../../components/SelectInput'
 import * as S from './styles'
 
-const List: React.FC = () => {
+type ListProps = {
+  type?: string
+}
+
+const List = ({ type }: ListProps) => {
+  const { title, lineColor } = useMemo(() => {
+    return type === 'entry-balance'
+      ? {
+          title: 'Inputs',
+          lineColor: '#f7931b'
+        }
+      : {
+          title: 'Outputs',
+          lineColor: '#e44c4e'
+        }
+  }, [type])
+
   const months = [
     {
       value: 7,
@@ -35,7 +52,7 @@ const List: React.FC = () => {
   ]
   return (
     <S.Wrapper>
-      <ContentHeader title="Inputs" lineColor="#e44c4e">
+      <ContentHeader title={title} lineColor={lineColor}>
         <SelectInput options={months} />
         <SelectInput options={years} />
       </ContentHeader>
