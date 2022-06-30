@@ -1,6 +1,9 @@
-import { useMemo } from 'react'
+import MD5 from 'crypto-js/md5'
+import gains from '../../repositories/gains'
+import expenses from '../../repositories/expenses'
 import ContentHeader from '../../components/ContentHeader'
 import HistoryFinanceCard from '../../components/HistoryFinanceCard'
+import { useEffect, useMemo, useState } from 'react'
 import SelectInput from '../../components/SelectInput'
 import * as S from './styles'
 
@@ -8,16 +11,29 @@ type ListProps = {
   type?: string
 }
 
+type dataProps = {
+  id: string
+  description: string
+  amount: string
+  type: string
+  frequency: string
+  date: string
+  tagColor: string
+}
+
 const List = ({ type }: ListProps) => {
-  const { title, lineColor } = useMemo(() => {
+  const [data, setData] = useState<dataProps[]>([])
+  const { title, lineColor, listData } = useMemo(() => {
     return type === 'entry-balance'
       ? {
           title: 'Inputs',
-          lineColor: '#f7931b'
+          lineColor: '#f7931b',
+          listData: gains
         }
       : {
           title: 'Outputs',
-          lineColor: '#e44c4e'
+          lineColor: '#e44c4e',
+          listData: expenses
         }
   }, [type])
 
@@ -50,6 +66,24 @@ const List = ({ type }: ListProps) => {
       label: '2022'
     }
   ]
+
+  useEffect(() => {
+    const listDataConverted = listData.map((item, index) => {
+      const uniqueId = JSON.stringify(item) + index.toString()
+      return {
+        id: MD5(uniqueId).toString(),
+        description: item.description,
+        amount: item.amount,
+        type: item.type,
+        frequency: item.frequency,
+        date: item.date,
+        tagColor: item.frequency === 'regular' ? '#4e41f0' : '#e44c4e'
+      }
+    })
+    console.log(listDataConverted)
+    setData(listDataConverted)
+  }, [listData])
+
   return (
     <S.Wrapper>
       <ContentHeader title={title} lineColor={lineColor}>
@@ -66,12 +100,15 @@ const List = ({ type }: ListProps) => {
         </button>
       </S.Filters>
       <S.Content>
-        <HistoryFinanceCard
-          tagColor="#e44c4e"
-          title="Power bill"
-          subtitle="2022-01-01"
-          amount="R$ 115.00"
-        />
+        {data.map((item) => (
+          <HistoryFinanceCard
+            key={item.id}
+            tagColor={item.tagColor}
+            title={item.description}
+            subtitle={item.date}
+            amount={'$' + item.amount}
+          />
+        ))}
       </S.Content>
     </S.Wrapper>
   )
