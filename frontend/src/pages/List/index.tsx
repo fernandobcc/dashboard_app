@@ -7,7 +7,7 @@ import { useEffect, useMemo, useState } from 'react'
 import SelectInput from '../../components/SelectInput'
 import * as S from './styles'
 import formatCurrency from '../../utils/currencyFormat'
-import formatDate from '../../utils/formatDate'
+import { formatDate, checkDateString } from '../../utils/formatDate'
 
 type ListProps = {
   type?: string
@@ -24,6 +24,8 @@ type dataProps = {
 }
 
 const List = ({ type }: ListProps) => {
+  const [selectedMonth, setMonthSelected] = useState(String(new Date().getMonth() + 1))
+  const [selectedYear, setYearSelected] = useState(String(new Date().getFullYear()))
   const [data, setData] = useState<dataProps[]>([])
   const { title, lineColor, listData } = useMemo(() => {
     return type === 'entry-balance'
@@ -70,27 +72,41 @@ const List = ({ type }: ListProps) => {
   ]
 
   useEffect(() => {
-    const listDataConverted = listData.map((item, index) => {
+    const filteredData = listData.filter((item) =>
+      checkDateString(selectedYear, selectedMonth, item.date)
+    )
+    const listDataConverted = filteredData.map((item, index) => {
       const uniqueId = JSON.stringify(item) + index.toString()
-      return {
-        id: MD5(uniqueId).toString(),
-        description: item.description,
-        amount: formatCurrency(item.amount),
-        type: item.type,
-        frequency: item.frequency,
-        date: item.date,
-        tagColor: item.frequency === 'regular' ? '#4e41f0' : '#e44c4e'
+      if (checkDateString(selectedYear, selectedMonth, item.date)) {
+        return {
+          id: MD5(uniqueId).toString(),
+          description: item.description,
+          amount: formatCurrency(item.amount),
+          type: item.type,
+          frequency: item.frequency,
+          date: item.date,
+          tagColor: item.frequency === 'regular' ? '#4e41f0' : '#e44c4e'
+        }
       }
-    })
-    console.log(listDataConverted)
+    }) as dataProps[]
+    console.log(filteredData)
     setData(listDataConverted)
-  }, [listData])
+  }, [listData, selectedMonth, selectedYear])
 
+  console.log('firt', selectedYear)
   return (
     <S.Wrapper>
       <ContentHeader title={title} lineColor={lineColor}>
-        <SelectInput options={months} />
-        <SelectInput options={years} />
+        <SelectInput
+          options={months}
+          defaultValue={selectedMonth}
+          onChange={(e) => setMonthSelected(e.target.value)}
+        />
+        <SelectInput
+          options={years}
+          defaultValue={selectedYear}
+          onChange={(e) => setYearSelected(e.target.value)}
+        />
       </ContentHeader>
 
       <S.Filters>

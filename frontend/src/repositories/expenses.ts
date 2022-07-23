@@ -23,6 +23,7 @@ export default [
   {
     description: 'Health plan',
     amount: '300.00',
+
     type: 'output',
     frequency: 'regular',
     date: '2020-01-23'
