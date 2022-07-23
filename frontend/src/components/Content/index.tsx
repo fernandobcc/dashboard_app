@@ -4,7 +4,7 @@ interface Props {
   children: React.ReactNode
 }
 
-const Content: React.FC<Props> = ({ children }) => {
+const Content = ({ children }: Props) => {
   return <S.Wrapper>{children}</S.Wrapper>
 }
 

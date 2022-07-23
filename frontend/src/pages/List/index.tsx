@@ -6,6 +6,8 @@ import HistoryFinanceCard from '../../components/HistoryFinanceCard'
 import { useEffect, useMemo, useState } from 'react'
 import SelectInput from '../../components/SelectInput'
 import * as S from './styles'
+import formatCurrency from '../../utils/currencyFormat'
+import formatDate from '../../utils/formatDate'
 
 type ListProps = {
   type?: string
@@ -73,7 +75,7 @@ const List = ({ type }: ListProps) => {
       return {
         id: MD5(uniqueId).toString(),
         description: item.description,
-        amount: item.amount,
+        amount: formatCurrency(item.amount),
         type: item.type,
         frequency: item.frequency,
         date: item.date,
@@ -105,8 +107,8 @@ const List = ({ type }: ListProps) => {
             key={item.id}
             tagColor={item.tagColor}
             title={item.description}
-            subtitle={item.date}
-            amount={'$' + item.amount}
+            subtitle={formatDate(item.date)}
+            amount={item.amount}
           />
         ))}
       </S.Content>

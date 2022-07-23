@@ -3,7 +3,7 @@ import * as S from './styles'
 import emojis from '../../utils/emojis'
 import Toggle from '../Toggle'
 
-const MainHeader: React.FC = () => {
+const MainHeader = () => {
   const emoji = useMemo(() => {
     const indice = Math.floor(Math.random() * emojis.length)
     return emojis[indice]

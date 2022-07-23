@@ -7,7 +7,7 @@ interface ISelectInputProps {
   }[]
 }
 
-const SelectInput: React.FC<ISelectInputProps> = ({ options }) => (
+const SelectInput = ({ options }: ISelectInputProps) => (
   <S.Wrapper>
     <select>
       {options.map((option) => (

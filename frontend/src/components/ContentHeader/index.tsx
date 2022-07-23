@@ -6,7 +6,7 @@ interface IContentHeaderProps {
   children: React.ReactNode
 }
 
-const ContentHeader: React.FC<IContentHeaderProps> = ({ title, lineColor, children }) => {
+const ContentHeader = ({ title, lineColor, children }: IContentHeaderProps) => {
   return (
     <S.Wrapper>
       <S.TitleContainer lineColor={lineColor}>
