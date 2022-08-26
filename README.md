@@ -2,6 +2,9 @@
 
 This project provides a Dashboard template using typscript + react.
 
+![Dashboard](https://user-images.githubusercontent.com/7408092/186991400-b3ef01d0-180a-4b2b-ae54-4760bef593ca.png)
+
+
 ## Available Scripts
 
 In the project directory, you can run:
